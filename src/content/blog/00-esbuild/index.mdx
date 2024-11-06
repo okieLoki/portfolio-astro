@@ -1,0 +1,118 @@
+---
+title: "Getting started with esbuild"
+description: "Kickstart your project with esbuild, a fast and efficient JavaScript bundler."
+date: "2024-11-06"
+---
+
+import Callout from "@/components/Callout.astro";
+
+---
+
+## Why esbuild? ⚡️
+
+[esbuild](https://esbuild.github.io) is a blazing-fast JavaScript bundler and minifier built for modern development workflows. With its robust TypeScript and JavaScript support, esbuild is gaining traction for being one of the fastest tools on the market, thanks to its core written in Go.
+
+### Key Features
+
+- **Incredible Speed**: esbuild is designed for speed. It’s optimized to be orders of magnitude faster than many other JavaScript bundlers.
+- **Native TypeScript Support**: Unlike other tools, esbuild handles TypeScript out-of-the-box, removing the need for a separate transpiler.
+- **Tree Shaking and Code Splitting**: esbuild keeps bundles lean by automatically removing unused code, making it an ideal choice for optimizing frontend performance.
+
+## Setup and Basic Usage 🚀
+
+To get started, install esbuild via npm:
+
+```bash
+npm install esbuild --save-dev
+```
+
+Then, you can add a build script to your package.json:
+
+```json
+"scripts": {
+  "build": "esbuild src/index.js --bundle --minify --outdir=dist"
+}
+```
+
+This command will bundle and minify your JavaScript files and place the output in a `dist` folder. You can also add other options, like TypeScript support, by simply pointing to `.ts` files instead of `.js`.
+
+---
+
+## Key Benefits of Using esbuild
+
+### Speed That Scales 📈
+
+<Callout type="info">
+  esbuild can reduce build times from minutes to mere seconds, making it ideal for both large and small projects.
+</Callout>
+
+Compared to other popular tools, esbuild is significantly faster because it’s written in Go, a language known for efficiency and speed. The performance improvements are especially noticeable when working on large codebases or monorepos.
+
+### Build Configurations
+
+With esbuild, you can simplify your build process by configuring options such as `--bundle`, `--minify`, and `--sourcemap` right in the command line or in a dedicated config file:
+
+```json
+{
+  "entryPoints": ["src/index.ts"],
+  "bundle": true,
+  "minify": true,
+  "outdir": "dist"
+}
+```
+
+### Built-in Plugins 🧩
+
+The esbuild ecosystem offers various plugins, such as ones for handling CSS, JSX, and additional file types, making it versatile for most web projects.
+
+---
+
+## Advanced Tips for Optimization 🎯
+
+### Tree Shaking and Dead Code Elimination
+
+esbuild performs tree shaking automatically, reducing bundle size by eliminating unused code.
+
+```bash
+esbuild src/index.js --bundle --minify --tree-shaking=true --outdir=dist
+```
+
+### Watch Mode 👀
+
+To speed up development, you can run esbuild in watch mode, which will automatically rebuild files on change:
+
+```bash
+esbuild src/index.js --bundle --watch --outdir=dist
+```
+
+<Callout type="warning">
+  esbuild’s watch mode doesn’t replace a fully featured dev server but works well for local development.
+</Callout>
+
+---
+
+## New UI Enhancements 🎨
+
+esbuild’s community-driven contributions are expanding its ecosystem, with tools like `esbuild-serve` and `esbuild-dev` adding useful features for development.
+
+## Troubleshooting Common Issues ⚠️
+
+### Handling CSS Files
+
+esbuild doesn’t handle CSS out-of-the-box, so you’ll need to install a plugin or use CSS pre-processing tools.
+
+### Working with Environment Variables
+
+Using `define` allows you to set environment variables in esbuild:
+
+```bash
+esbuild src/index.js --bundle --define:process.env.NODE_ENV=\"production\" --outdir=dist
+```
+
+---
+
+## Final Thoughts 💡
+
+esbuild is revolutionizing how developers approach the build process. Its unparalleled speed, ease of use, and flexible configurations make it an excellent choice for both small projects and enterprise-level applications. Give it a try and experience the difference!
+
+---
